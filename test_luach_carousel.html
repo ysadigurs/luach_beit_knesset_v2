@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luach with Carousel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            direction: rtl;
+            text-align: right;
+            cursor: none;
+        }
+        /* Top section with background image */
+        .top-section {
+            height: 200px;
+            /*background-image: url('file:///Users/ysadigurschi/Downloads/bg_head.jpg');*/
+            /*background-color: #ecddcc;*/
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: black;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 32px;
+        }
+
+        /* Carousel section */
+        .carousel-section {
+            padding: 10px 0;            
+        }
+
+        /* Bottom section */
+        .bottom-section {
+            height: 100px;            
+            display: flex;            
+           font-size: 24px;
+        }
+
+        /* Placeholder styling for carousel items */
+        .carousel-item-content {            
+            height: 680px;
+            display: flex;            
+            padding: 5px;
+            /*text-align: center;*/
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 46px;            
+            margin-right: 100px;
+        }
+
+        /* Ensure text doesn't overflow */
+        .text-wrap {
+            max-height: 100%;
+            overflow: hidden;
+        }
+        .card-custom {
+            border: none;
+            background-color: transparent;
+        }
+        .row-custom {
+            height: 50px;
+            display: flex;                        
+            font-size: 46px;            
+            color: darkred;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            justify-content: center;
+            text-align: center;          
+        }
+
+    </style>
+</head>
+<body style="background-image: url('file:///Users/ysadigurschi/Downloads/bbb.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+
+    <div class="container-fluid">
+        <!-- Top Section: 2 columns with background image and text -->
+        <div class="row top-section">
+            <div class="col-6 text-center">
+                <h1><span id="weekday"></span></h1> 
+                <h1><span id="today"></span></h1>
+                <h1><span id="daf_yomi"></span></h1>
+            </div>
+            <div class="col-6 text-center">
+                <h1><span id="digital-clock"></span></h1>
+                <h1><span id="loazi"></span></h1>
+                <div id="connection-status" class="status-circle"></div>                
+            </div>
+        </div>
+
+        <!-- Carousel Section: 6 columns, 4 rows, 2 columns displayed at a time -->
+        <div class="row carousel-section">
+            <div class="col-12">
+                <div id="layoutCarousel" class="carousel slide" data-bs-ride="carousel" data-interval="3000">
+                    <div class="carousel-inner">
+                        <!-- First slide -->
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="row row-custom"><p>זמנים<img src="clock.jpg" width="32" height="32"></p></div>
+                                <div class="col-6">
+                                    <div class="carousel-item-content text-wrap">                                        
+                                        <div class="card card-custom">                               
+                                            <div class="card-body">                                                
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <p>חצות הלילה</p>
+                                                    </div>                            
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="chatzotNight"></span></p>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <p>עלות השחר</p>
+                                                    </div>                           
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="alotHaShachar"></span></p>
+                                                    </div>                            
+                                                    <div class="col-7">
+                                                        <p>זמן ציצית</p>
+                                                    </div>                            
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="misheyakir"></span></p>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <p>נץ החמה</p>
+                                                    </div>                            
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="sunrise"></span></p>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <p>סזמק״ש מג״א</p>
+                                                    </div>                            
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="sofZmanShmaMGA"></span></p>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <p>סזק״ש גר״א</p>
+                                                    </div>                            
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="sofZmanShma"></span></p>
+                                                    </div> 
+                                               </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="carousel-item-content text-wrap">
+                                        <div class="card card-custom">                    
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <p>סוף זמן תפילה</p>
+                                                    </div>                            
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="sofZmanTfilla"></span></p>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <p>חצות היום </p>
+                                                    </div>                            
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="chatzot"></span></p>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <p>מנחה גדולה</p>
+                                                    </div>                            
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="minchaGedola"></span></p>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <p>שקיעת החמה </p>
+                                                    </div>
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="sunset"></span></p>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <p>צאת הכוכבים </p>
+                                                    </div>                            
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="tzeit"></span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Second slide -->
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="row row-custom"><p>שבת<img src="candles.jpg" width="32" height="32"></p></div>
+                                <div class="col-6">
+                                    <div class="carousel-item-content text-wrap">
+                                            <div class="card card-custom">     
+                                                <div class="card-body">                                                    
+                                                    <div class="row">
+                                                        <div class="col-7">
+                                                            <p>פרשת השבוע</p>
+                                                        </div>
+                                                        <div class="col-5 text-left">
+                                                            <p><span id="parasha" style="font-weight: bold;"></span></p>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p>הדלקת נרות</p>
+                                                        </div>
+                                                        <div class="col-5 text-left">
+                                                            <p><span id="shabbat-hour"></span></p>
+                                                        </div>                            
+                                                        <div class="col-7">
+                                                            <p>מנחה וקבלת שבת</p>
+                                                        </div>
+                                                        <div class="col-5 text-left">
+                                                            <p><span id="mincha_erev"></span></p>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p>דבר תורה</p>
+                                                        </div>
+                                                        <div class="col-5 text-left">
+                                                            <p>הרב</p>
+                                                        </div>                                                        
+                                                        <div class="col-7">
+                                                            <p>שחרית מנין א</p>
+                                                        </div>
+                                                        <div class="col-5 text-left">
+                                                            <p>06:25</p>
+                                                        </div>                            
+                                                        <div class="col-7">
+                                                            <p>שיעור דף יומי</p>
+                                                        </div>
+                                                        <div class="col-5 text-left">
+                                                            <p>07:15</p>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p>שחרית</p>
+                                                        </div>
+                                                        <div class="col-5 text-left">
+                                                            <p>08:00</p>
+                                                        </div>                           
+                                                    </div>
+                                                </div>
+                                            </div>
+                                       </div>
+                                    
+                                </div>
+                                <div class="col-6">
+                                    <div class="carousel-item-content text-wrap">
+                                           <div class="card card-custom">
+                                                <!-- <div class="card-header"><p>שבת</p></div> -->
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-7">
+                                                            <p>שיעור הרב בוכריס</p>
+                                                        </div>
+                                                        <div class="col-5 text-left">
+                                                            <p>10:15</p>
+                                                        </div>   
+                                                        <div class="col-7">
+                                                            <p>מנחה גדולה</p>
+                                                        </div>
+                                                        <div class="col-5 text-left">
+                                                            <p>01:30</p>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p>שיעור שבת יקבע בהמשך עם הרב </p>
+                                                        </div>
+                                                        <div class="col-5 text-left">
+                                                            <p>16:00</p>
+                                                        </div>                  
+                                                        <div class="col-7">
+                                                            <p>מנחה</p>
+                                                        </div>
+                                                        <div class="col-5 text-left">
+                                                            <p><span id="mincha_ktana_shabat"></span></p>
+                                                        </div>                            
+                                                        <div class="col-7">
+                                                            <p>שקיעה</p>
+                                                        </div>
+                                                        <div class="col-5 text-left">
+                                                            <p><span id="sunset2"></span></p>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <p>מוצ״ש</p>
+                                                        </div>
+                                                        <div class="col-5 text-left">
+                                                            <p><span id="motzash"></span></p>
+                                                        </div>
+                                                        <div class="col-12 text-right">
+                                                            <p><span id="odaha_1"></span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+
+                        <!-- Third slide -->
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="row row-custom"><p>ימי חול<img src="sidur.jpg" width="32" height="32"></p></div>
+                                <div class="col-6">
+                                    <div class="carousel-item-content text-wrap">
+                                       <div class="card card-custom">
+                                            <!--<div class="card-header"><p>חול</p></div>-->
+                                            <div class="card-body">                                                
+                                                <div class="row">                                                    
+                                                    <div class="col-7">
+                                                        <p>שחרית א</p>
+                                                    </div>
+                                                    <div class="col-5 text-left">
+                                                        <p>05:40</p>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <p>שחרית ב</p>
+                                                    </div>
+                                                    <div class="col-5 text-left">
+                                                        <p>06:20</p>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <p>שחרית ג</p>
+                                                    </div>
+                                                    <div class="col-5 text-left">
+                                                        <p>07:30</p>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <p>מנחה גדולה</p>
+                                                    </div>
+                                                    <div class="col-5 text-left">
+                                                        <p>13:00</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="carousel-item-content text-wrap">
+                                       <div class="card card-custom">
+                                            <!--<div class="card-header"><p>חול</p></div>-->
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <p>מנחה קטנה</p>
+                                                    </div>
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="mincha_ktana_chol"></span></p>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <p>ערבית</p>
+                                                    </div>
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="arvit_chol"></span></p>
+                                                    </div>                                                    
+                                                    <div class="col-7">
+                                                        <p></p>
+                                                    </div>
+                                                    <div class="col-5 text-left">
+                                                        <p><span id="odaha_2"></span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Carousel Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#layoutCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#layoutCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Section: 2 columns with text -->
+        <div class="row bottom-section">
+            <div class="col-6 text-center">
+                <p>יישר כח לישראל לייבוביץ על לוח הזמנים</p>
+            </div>
+            <div class="col-6 text-center">
+                <p>לע״נ שמואל סדיגורסקי ז״ל, שמשון שמעון קלמוס ז״ל,  שמעון כהן ז״ל ופיבי בת מסעודה ז״ל</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+<
+</body>
+</html>
