@@ -1,0 +1,3 @@
+cd .config/lxsession/LXDE-pi/
+vi autostart
+@/home/pi/Documents/luach/luach2.sh
