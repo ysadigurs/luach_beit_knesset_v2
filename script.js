@@ -313,7 +313,7 @@ function displayConfig() {
         document.getElementById('shiur_shabat_time').textContent = `${data["shiurShabatTime"]}`;
             
         const currentDay = getCurrentDay();
-        if (currentDay === "Wednesday" || currentDay === "Thursday" || currentDay === "Friday" || currentDay === "Saturday" ) {
+        if (currentDay === "Thursday" || currentDay === "Friday" || currentDay === "Saturday" ) {
         
             // Read config json data            
             document.getElementById('dvar_tora').textContent = `${data["dvarTora"]}`;
