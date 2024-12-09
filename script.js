@@ -322,8 +322,8 @@ function displayConfig() {
         }
         else {
             // Clear config data in the begining of the week
-            document.getElementById('dvar_tora').textContent = "";
-            document.getElementById('shiur_shabat_name').textContent = "";
+            document.getElementById('dvar_tora').textContent = "פלוני";
+            document.getElementById('shiur_shabat_name').textContent = "שיעור שבת";
         }
            
                  
