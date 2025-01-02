@@ -454,7 +454,7 @@ function initApp () {
     //displayWeather(); // - CORS issue
   
     // Reset the page data every few minutes (milliseconds)
-    setInterval(displayAll, 1000*60*60);   
+    setInterval(displayAll, 1000*60*60*4);   
     displayAll();
 }
 
