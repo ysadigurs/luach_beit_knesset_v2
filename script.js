@@ -324,7 +324,8 @@ function displayConfig() {
         document.getElementById('shiur_tfila_time').textContent = `${data["shiurAfterTfilaTime"]}`;
         document.getElementById('shiur_tfila').textContent = `${data["shiurAfterTfila"]}`;        
         document.getElementById('shiur_shabat_time').textContent = `${data["shiurShabatTime"]}`;
-        document.getElementById('shiur_shabat_name').textContent = `${data["shiurShabatName"]}`;          
+        document.getElementById('shiur_shabat_name').textContent = `${data["shiurShabatName"]}`;
+        document.getElementById('shiur_shabat_subject').textContent = `${data["shiurShabatSubject"]}`;          
         
         document.getElementById('shiur_tfila_time').textContent = `${data["shiurAfterTfilaTime"]}`;
         document.getElementById('shiur_tfila').textContent = `${data["shiurAfterTfila"]}`;        
@@ -343,12 +344,14 @@ function displayConfig() {
             // Read config json data            
             document.getElementById('dvar_tora').textContent = `${data["dvarTora"]}`;
             document.getElementById('shiur_shabat_name').textContent = `${data["shiurShabatName"]}`;
+            document.getElementById('shiur_shabat_subject').textContent = `${data["shiurShabatSubject"]}`;
         
         }
         else {
             // Clear config data in the begining of the week
             document.getElementById('dvar_tora').textContent = "יעודכן";
             document.getElementById('shiur_shabat_name').textContent = "שיעור שבת";
+            document.getElementById('shiur_shabat_subject').textContent = "";
         }
            
                  
