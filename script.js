@@ -349,7 +349,7 @@ function displayConfig() {
         }
         else {
             // Clear config data in the begining of the week
-            document.getElementById('dvar_tora').textContent = "יעודכן";
+            document.getElementById('dvar_tora').textContent = "דבר תורה: יעודכן";
             document.getElementById('shiur_shabat_name').textContent = "שיעור שבת";
             document.getElementById('shiur_shabat_subject').textContent = "";
         }
