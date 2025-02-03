@@ -318,20 +318,7 @@ function displayConfig() {
         document.getElementById('shacharit_chol_3').textContent = `${data["shacharit_chol_3"]}`;    
         document.getElementById('mincha_gdola_chol').textContent = `${data["mincha_gdola_chol"]}`;   
     
-        
-        // Read config json data            
-        document.getElementById('dvar_tora').textContent = `${data["dvarTora"]}`;
-        document.getElementById('shiur_tfila_time').textContent = `${data["shiurAfterTfilaTime"]}`;
-        document.getElementById('shiur_tfila').textContent = `${data["shiurAfterTfila"]}`;        
-        document.getElementById('shiur_shabat_time').textContent = `${data["shiurShabatTime"]}`;
-        document.getElementById('shiur_shabat_name').textContent = `${data["shiurShabatName"]}`;
-        document.getElementById('shiur_shabat_subject').textContent = `${data["shiurShabatSubject"]}`;          
-        
-        document.getElementById('shiur_tfila_time').textContent = `${data["shiurAfterTfilaTime"]}`;
-        document.getElementById('shiur_tfila').textContent = `${data["shiurAfterTfila"]}`;        
-        document.getElementById('shiur_shabat_time').textContent = `${data["shiurShabatTime"]}`;
-    
-
+                
         // Update config only on Friday and Saturday
         // const currentDay = getCurrentDay();
         // if (currentDay === "Friday" || currentDay === "Saturday" )
@@ -343,15 +330,26 @@ function displayConfig() {
         
             // Read config json data            
             document.getElementById('dvar_tora').textContent = `${data["dvarTora"]}`;
+            
+            document.getElementById('shiur_tfila_time').textContent = `${data["shiurAfterTfilaTime"]}`;
+            document.getElementById('shiur_tfila').textContent = `${data["shiurAfterTfila"]}`;        
+            
+            document.getElementById('shiur_shabat_time').textContent = `${data["shiurShabatTime"]}`;
             document.getElementById('shiur_shabat_name').textContent = `${data["shiurShabatName"]}`;
             document.getElementById('shiur_shabat_subject').textContent = `${data["shiurShabatSubject"]}`;
-        
+            
         }
         else {
             // Clear config data in the begining of the week
-            document.getElementById('dvar_tora').textContent = "דבר תורה: יעודכן";
-            document.getElementById('shiur_shabat_name').textContent = "שיעור שבת";
+            document.getElementById('dvar_tora').textContent = "יעודכן";
+            
+            document.getElementById('shiur_tfila_time').textContent = "     ";
+            document.getElementById('shiur_tfila').textContent = "יעודכן";        
+            
+            document.getElementById('shiur_shabat_time').textContent = "     ";
+            document.getElementById('shiur_shabat_name').textContent = "יעודכן";
             document.getElementById('shiur_shabat_subject').textContent = "";
+
         }
            
                  
