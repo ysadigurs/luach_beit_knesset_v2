@@ -309,7 +309,9 @@ function displayConfig() {
         document.getElementById('shiur_daf_yomi').textContent = `${data["shiurDafYomiTime"]}`;
         document.getElementById('odaha_1').textContent = `${data["odaha1"]}`;
         document.getElementById('odaha_2').textContent = `${data["odaha2"]}`;
-        //document.getElementById('odaha_3').textContent = `${data["odaha3"]}`;   
+        document.getElementById('odaha_3').textContent = `${data["odaha3"]}`;
+        document.getElementById('chagim_1').textContent = `${data["chagim1"]}`;
+        document.getElementById('chagim_2').textContent = `${data["chagim2"]}`;
         document.getElementById('shacharit_shabat_1').textContent = `${data["shacharit_shabat_1"]}`;
         document.getElementById('shacharit_shabat').textContent = `${data["shacharit_shabat"]}`;
         document.getElementById('mincha_gdola_shabat').textContent = `${data["mincha_gdola_shabat"]}`;
@@ -320,13 +322,13 @@ function displayConfig() {
     
                 
         // Update config only on Friday and Saturday
-        // const currentDay = getCurrentDay();
+        const currentDay = getCurrentDay();
         // if (currentDay === "Friday" || currentDay === "Saturday" )
 
         // Update config from current week
         const configDate = new Date(`${data["configDate"]}`);
 
-        if (isDateInCurrentWeek(configDate)) {
+        if (isDateInCurrentWeek(configDate) || currentDay === "Sunday") {
         
             // Read config json data            
             document.getElementById('dvar_tora').textContent = `${data["dvarTora"]}`;
