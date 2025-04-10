@@ -308,10 +308,17 @@ function displayConfig() {
         // Read fixed json data
         document.getElementById('shiur_daf_yomi').textContent = `${data["shiurDafYomiTime"]}`;
         document.getElementById('odaha_1').textContent = `${data["odaha1"]}`;
-        document.getElementById('odaha_2').textContent = `${data["odaha2"]}`;
-        document.getElementById('odaha_3').textContent = `${data["odaha3"]}`;
         document.getElementById('chagim_1').textContent = `${data["chagim1"]}`;
-        document.getElementById('chagim_2').textContent = `${data["chagim2"]}`;
+
+        document.getElementById('odaha_2_name').textContent = `${data["odaha2Name"]}`;
+        document.getElementById('odaha_2_time').textContent = `${data["odaha2Time"]}`;
+        
+        document.getElementById('odaha_3_name').textContent = `${data["odaha3Name"]}`;
+        document.getElementById('odaha_3_time').textContent = `${data["odaha3Time"]}`;
+
+        document.getElementById('chagim_2_name').textContent = `${data["chagim2Name"]}`;
+        document.getElementById('chagim_2_time').textContent = `${data["chagim2Time"]}`;
+        
         document.getElementById('shacharit_shabat_1').textContent = `${data["shacharit_shabat_1"]}`;
         document.getElementById('shacharit_shabat').textContent = `${data["shacharit_shabat"]}`;
         document.getElementById('mincha_gdola_shabat').textContent = `${data["mincha_gdola_shabat"]}`;
