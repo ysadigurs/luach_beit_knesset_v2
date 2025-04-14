@@ -309,7 +309,8 @@ function displayConfig() {
         document.getElementById('shiur_daf_yomi').textContent = `${data["shiurDafYomiTime"]}`;
         document.getElementById('odaha_1').textContent = `${data["odaha1"]}`;
         document.getElementById('chagim_1').textContent = `${data["chagim1"]}`;
-
+        document.getElementById('chagim_2').textContent = `${data["chagim2"]}`;
+        
         document.getElementById('odaha_2_name').textContent = `${data["odaha2Name"]}`;
         document.getElementById('odaha_2_time').textContent = `${data["odaha2Time"]}`;
         
