@@ -347,7 +347,7 @@ function displayConfig() {
         document.getElementById('chagim_1').textContent = `${data["chagim1"]}`;
         document.getElementById('chagim_2').textContent = `${data["chagim2"]}`;
 
-        
+        /*
         document.getElementById('odaha_2_name').textContent = `${data["odaha2Name"]}`;
         document.getElementById('odaha_2_time').textContent = `${data["odaha2Time"]}`;
         
@@ -356,7 +356,8 @@ function displayConfig() {
 
         document.getElementById('chagim_2_name').textContent = `${data["chagim2Name"]}`;
         document.getElementById('chagim_2_time').textContent = `${data["chagim2Time"]}`;
-        
+        */
+
         document.getElementById('shacharit_shabat_1').textContent = `${data["shacharit_shabat_1"]}`;
         document.getElementById('shacharit_shabat').textContent = `${data["shacharit_shabat"]}`;
         document.getElementById('mincha_gdola_shabat').textContent = `${data["mincha_gdola_shabat"]}`;
@@ -376,7 +377,7 @@ function displayConfig() {
         if (isDateInCurrentWeek(configDate)) {
         
             // Read config json data            
-            document.getElementById('dvar_tora').textContent = `${data["dvarTora"]}`;
+            //document.getElementById('dvar_tora').textContent = `${data["dvarTora"]}`;
             
             document.getElementById('shiur_tfila_time').textContent = `${data["shiurAfterTfilaTime"]}`;
             document.getElementById('shiur_tfila').textContent = `${data["shiurAfterTfila"]}`;        
@@ -388,7 +389,7 @@ function displayConfig() {
         }
         else {
             // Clear config data in the begining of the week
-            document.getElementById('dvar_tora').textContent = "יעודכן";
+            //document.getElementById('dvar_tora').textContent = "יעודכן";
             
             document.getElementById('shiur_tfila_time').textContent = "     ";
             document.getElementById('shiur_tfila').textContent = "יעודכן";        
