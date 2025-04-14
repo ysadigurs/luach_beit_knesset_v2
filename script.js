@@ -335,7 +335,7 @@ function displayConfig() {
         // Update config from current week
         const configDate = new Date(`${data["configDate"]}`);
 
-        if (isDateInCurrentWeek(configDate) || currentDay === "Sunday") {
+        if (isDateInCurrentWeek(configDate)) {
         
             // Read config json data            
             document.getElementById('dvar_tora').textContent = `${data["dvarTora"]}`;
