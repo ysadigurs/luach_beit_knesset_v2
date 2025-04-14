@@ -82,6 +82,42 @@ function getNextSaturday() {
     return nextSaturday;
 }
 
+
+function formatDateToYYYYMMDD(date) {
+    const day = String(date.getDate()).padStart(2, '0'); // Get day and pad with leading zero if needed
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Get month (0-indexed) and pad with leading zero
+    const year = date.getFullYear(); // Get year
+
+    return `${year}-${month}-${day}`; // Format as yyyy-mm-dd
+}
+
+
+function displayOmer () {
+
+    const today = new Date();
+    const recordDate = formatDateToYYYYMMDD(today);
+    const url = 'https://www.hebcal.com/hebcal?cfg=json&o=on&start='+`${recordDate}`+'&end='+`${recordDate}`+'&geonameid=293590';
+
+    console.log('display omer url: ' + url);
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+
+        const omerItem = data.items.find(item => item.category === "omer");
+
+        document.getElementById('odaha_2').textContent = `${omerItem.omer.count.he}`;
+        
+        console.log('data = ' + JSON.stringify(data));
+        console.log('today omer = ' + omerItem.omer.count.he);   
+    })
+    .catch(error => {
+        console.error('Error fetching the Omer:', error);
+    });
+    
+    console.log('displayOmer() ends');        
+} 
+
 /* 
  * Daily Zmanim
  * Shaalabim geonameid=293590
@@ -310,6 +346,7 @@ function displayConfig() {
         document.getElementById('odaha_1').textContent = `${data["odaha1"]}`;
         document.getElementById('chagim_1').textContent = `${data["chagim1"]}`;
         document.getElementById('chagim_2').textContent = `${data["chagim2"]}`;
+
         
         document.getElementById('odaha_2_name').textContent = `${data["odaha2Name"]}`;
         document.getElementById('odaha_2_time').textContent = `${data["odaha2Time"]}`;
@@ -452,6 +489,7 @@ function displayAll () {
     displayZmanim();
     displayConfig();
     displayChol();
+    displayOmer();
     // displayChagim();
     checkInternetConnection();  
 }
