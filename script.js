@@ -115,11 +115,12 @@ function displayOmer (tzeet) {
     .then(data => {
 
         const omerItem = data.items.find(item => item.category === "omer");
-
-        document.getElementById('odaha_2').textContent = `${omerItem.omer.count.he}`;
+        if (omerItem != null) {
+            document.getElementById('odaha_2').textContent = `${omerItem.omer.count.he}`;
         
-        console.log('data = ' + JSON.stringify(data));
-        console.log('today omer = ' + omerItem.omer.count.he);   
+            console.log('data = ' + JSON.stringify(data));
+            console.log('today omer = ' + omerItem.omer.count.he);
+        }   
     })
     .catch(error => {
         console.error('Error fetching the Omer:', error);
@@ -419,7 +420,7 @@ function displayConfig() {
             document.getElementById('dvar_tora_day').textContent = "";
             document.getElementById('dvar_tora_day_name').textContent = "";
 
-            
+
             document.getElementById('shiur_shabat_time').textContent = "";
             document.getElementById('shiur_shabat_name').textContent = "";
             document.getElementById('shiur_shabat_subject').textContent = "";
