@@ -92,10 +92,20 @@ function formatDateToYYYYMMDD(date) {
 }
 
 
-function displayOmer () {
+function displayOmer (tzeet) {
+
+    // Create a Date object for tzeet
+    const [hours, minutes] = tzeet.split(":").map(Number);
+    const tzeetInDate = new Date();
+    tzeetInDate.setHours(hours, minutes, 0, 0); // hour, min, sec, ms
 
     const today = new Date();
-    const recordDate = formatDateToYYYYMMDD(today);
+
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+    const dateToFetch = (today < tzeetInDate) ? today : tomorrow;
+    const recordDate = formatDateToYYYYMMDD(dateToFetch);
+
     const url = 'https://www.hebcal.com/hebcal?cfg=json&o=on&start='+`${recordDate}`+'&end='+`${recordDate}`+'&geonameid=293590';
 
     console.log('display omer url: ' + url);
@@ -289,8 +299,11 @@ function displayLeibovitzZmanimWithChagim() {
         document.getElementById('mincha_erev').textContent = addMinutesToTime(`${item["adlaka"].substr(0, 5)}`, 13);
         document.getElementById('mincha_ktana_shabat').textContent = `${item["minchashabat"].substr(0, 5)}`;        
         document.getElementById('motzash').textContent = `${item["motzash"].substr(0, 5)}`;    
-        document.getElementById('tzeit').textContent = `${item["tzeet"].substr(0, 5)}`;
-            
+        //document.getElementById('tzeit').textContent = `${item["tzeet"].substr(0, 5)}`;
+        const tzeet = `${item["tzeet"].substr(0, 5)}`;
+        document.getElementById('tzeit').textContent = tzeet;
+        displayOmer(tzeet);
+                    
         // Tfila Hol
         // Change to next week on Fridays.
         const currentDay = getCurrentDay();
@@ -381,7 +394,14 @@ function displayConfig() {
             
             document.getElementById('shiur_tfila_time').textContent = `${data["shiurAfterTfilaTime"]}`;
             document.getElementById('shiur_tfila').textContent = `${data["shiurAfterTfila"]}`;        
-            
+
+
+            document.getElementById('dvar_tora_night').textContent = `${data["dvarToraNight"]}`;
+            document.getElementById('dvar_tora_night_name').textContent = `${data["dvarToraNightName"]}`;
+            document.getElementById('dvar_tora_day').textContent = `${data["dvarToraDay"]}`;
+            document.getElementById('dvar_tora_day_name').textContent = `${data["dvarToraDayName"]}`;
+
+
             document.getElementById('shiur_shabat_time').textContent = `${data["shiurShabatTime"]}`;
             document.getElementById('shiur_shabat_name').textContent = `${data["shiurShabatName"]}`;
             document.getElementById('shiur_shabat_subject').textContent = `${data["shiurShabatSubject"]}`;
@@ -391,11 +411,17 @@ function displayConfig() {
             // Clear config data in the begining of the week
             //document.getElementById('dvar_tora').textContent = "יעודכן";
             
-            document.getElementById('shiur_tfila_time').textContent = "     ";
-            document.getElementById('shiur_tfila').textContent = "יעודכן";        
+            document.getElementById('shiur_tfila_time').textContent = "";
+            document.getElementById('shiur_tfila').textContent = "";        
             
-            document.getElementById('shiur_shabat_time').textContent = "     ";
-            document.getElementById('shiur_shabat_name').textContent = "יעודכן";
+            document.getElementById('dvar_tora_night').textContent = "";
+            document.getElementById('dvar_tora_night_name').textContent = "";
+            document.getElementById('dvar_tora_day').textContent = "";
+            document.getElementById('dvar_tora_day_name').textContent = "";
+
+            
+            document.getElementById('shiur_shabat_time').textContent = "";
+            document.getElementById('shiur_shabat_name').textContent = "";
             document.getElementById('shiur_shabat_subject').textContent = "";
 
         }
@@ -489,8 +515,7 @@ function displayAll () {
     displayLeibovitzZmanimWithChagim();    
     displayZmanim();
     displayConfig();
-    displayChol();
-    displayOmer();
+    displayChol();    
     // displayChagim();
     checkInternetConnection();  
 }
