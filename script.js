@@ -232,7 +232,7 @@ function displayLeibovitzZmanimWithChagim() {
         //document.getElementById('tzeit').textContent = `${item["tzeet"].substr(0, 5)}`;
         const tzeet = `${item["tzeet"].substr(0, 5)}`;
         document.getElementById('tzeit').textContent = tzeet;
-        displayOmer(tzeet);
+        //displayOmer(tzeet);
                     
         // Tfila Hol
         // Change to next week on Fridays.
