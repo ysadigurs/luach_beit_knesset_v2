@@ -163,23 +163,43 @@ function displayZmanim() {
 
 let parasha_date = null;
 
-function displayDafYomi(){
+/* Old function for daf yomi
+* function displayDafYomi(){
+* 
+*     fetch('https://www.hebcal.com/shabbat?cfg=json&i=on&geonameid=8199379&ue=off&b=28&c=on&M=on&F=on&lg=he&tgt=_top')
+*     .then(response => response.json())
+*     .then(data => {
+*         const today = getTodayDate();
+*         document.getElementById('daf_yomi').textContent = `${data.items.find( record => (record.category === "dafyomi" && record.date === today)).hebrew}`;
+* 
+*    })
+*     .catch(error => {
+*         console.error('Error fetching the daf yomi:', error);
+*     });
+*  
+*     console.log('displayDafYomi() ends');        
 
-    fetch('https://www.hebcal.com/shabbat?cfg=json&i=on&geonameid=8199379&ue=off&b=28&c=on&M=on&F=on&lg=he&tgt=_top')
-    .then(response => response.json())
-    .then(data => {
-        const today = getTodayDate();
-        document.getElementById('daf_yomi').textContent = `${data.items.find( record => (record.category === "dafyomi" && record.date === today)).hebrew}`;
+* }
+*/
 
-   })
-    .catch(error => {
-        console.error('Error fetching the daf yomi:', error);
-    });
- 
-    console.log('displayDafYomi() ends');        
- 
+// Daf yomi display - updated 22.3.2026
+unction displayDafYomi() {
+    const today = new Date().toISOString().slice(0, 10); // "2026-03-22"
 
+    fetch('https://www.hebcal.com/hebcal?cfg=json&v=1&F=on&maj=off&min=off&nx=off&mod=off&mf=off&ss=off&start=' + today + '&end=' + today)
+        .then(response => response.json())
+        .then(data => {
+            const daf = data.items.find(record => record.category === "dafyomi");
+            document.getElementById('daf_yomi').textContent = daf.hebrew;
+        })
+        .catch(error => {
+            console.error('Error fetching the daf yomi:', error);
+        });
+
+    // console.log('displayDafYomi() ends');
 }
+
+
 
 // Get Parasha date from today including Chagim
 // Retrieve Parasha record from Leibovitz
