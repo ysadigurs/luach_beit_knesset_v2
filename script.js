@@ -183,7 +183,7 @@ let parasha_date = null;
 */
 
 // Daf yomi display - updated 22.3.2026
-unction displayDafYomi() {
+function displayDafYomi() {
     const today = new Date().toISOString().slice(0, 10); // "2026-03-22"
 
     fetch('https://www.hebcal.com/hebcal?cfg=json&v=1&F=on&maj=off&min=off&nx=off&mod=off&mf=off&ss=off&start=' + today + '&end=' + today)
