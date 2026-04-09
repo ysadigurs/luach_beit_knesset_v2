@@ -209,8 +209,15 @@ function displayLeibovitzZmanimWithChagim() {
 
     // weekly leibovitz times
     fetch("https://ysadigurs.github.io/luach_beit_knesset/weekly.json")
-    .then(response => response.json())
-    .then(data => {
+    .then(response => {
+       if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+         }
+        console.log("response OK: ", response.status);
+        return response.json();
+     })
+     .then(data => {
+        console.log("Data received");
         // Get next record in Leibovitz sheet (shabat or chag)
         // Unit tests:
         // Today: getTodayDate() 2024/09/23
